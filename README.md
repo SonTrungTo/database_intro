@@ -27,3 +27,15 @@ taken from 2 sources:
 ### Set Operations vs Relational Operations
 - Union, Difference, Intersection and Cartesian.
 - Projection, Selection, Join and Division.
+
+## E-R Model
+- Entity and its relationship.
+- **Normalization** is dividing one complex table into tables that
+are easier to manage and update.
+- Repeated data is a clue that rows have to be divided.
+- Principle: Each primary key should uniquely identify a row.
+- Foreign key refers to primary key in other tables.
+- Number of associations between entities is called *cardinality*.
+- A value is *functionally dependent* if it determines the value in other columns.
+- A value is *transitively dependent* if it indirectly determines the value in other columns.
+- Conceptual schema vs internal schema vs external schema.
