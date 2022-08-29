@@ -16,3 +16,14 @@ taken from 2 sources:
 - It must have security and permissions to prevent unauthorized data manipulation.
 - It must have a mechanism to prevent data conflicts from simulatenous update.
 - It must have recovery mechanism from external failures (Internal Server Errors).
+
+## Database Terminology
+- **Record**: a piece of data. Each record contains fields of the same type.
+- **Field**: each item in a record.
+### Relational Database
+- A table is called *relation*
+- **Row** is a record.
+- **Column** is a field.
+### Set Operations vs Relational Operations
+- Union, Difference, Intersection and Cartesian.
+- Projection, Selection, Join and Division.

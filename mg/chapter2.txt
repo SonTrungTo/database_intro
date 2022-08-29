@@ -1,0 +1,5 @@
+Q1. Foreign Key
+Q2. ISBN
+Q3. Selection
+Q4. Union
+Q5. Join
