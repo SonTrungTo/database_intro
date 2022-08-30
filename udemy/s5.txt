@@ -1,0 +1,8 @@
+SELECT cat_id FROM cats;
+SELECT name, breed FROM cats;
+SELECT name, age FROM cats WHERE breed LIKE '%abb%';
+SELECT cat_id, age FROM cats WHERE cat_id = age;
+
+UPDATE cats SET name='Jack' WHERE name='Jackson' LIMIT 1;
+UPDATE cats SET breed='British Shorthair' WHERE name='Ringo';
+UPDATE cats SET age=12 WHERE breed='Maine Coon';
