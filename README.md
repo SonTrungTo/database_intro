@@ -39,3 +39,14 @@ are easier to manage and update.
 - A value is *functionally dependent* if it determines the value in other columns.
 - A value is *transitively dependent* if it indirectly determines the value in other columns.
 - Conceptual schema vs internal schema vs external schema.
+
+## SQL
+- Statements, phrases.
+- `WHERE product_name LIKE '%n'` => retrieve product_name that ends with `n`.
+- `WHERE product_name LIKE '_n'` => retrieve product_name that *after a character* with `n`.
+- Aggregate functions: `COUNT(*), COUNT(col_name), COUNT(DISTINCT col_name), SUM(col_name), AVG(col_name), MAX(col_name), MIN(col_name)`
+- Join Tables: `SELECT FROM WHERE`
+- Create and Insert: `CREATE TABLES name(); INSERT INTO name() VALUES();`
+- Delete and Update.
+- Futher searches: `BETWEEN x1 AND x2` or `WHERE x1 is NULL`
+- `GROUP BY ... HAVING`

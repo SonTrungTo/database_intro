@@ -1,0 +1,10 @@
+Q1. SELECT * FROM export_destination WHERE population >= 100;
+Q2. SELECT * FROM export_destination WHERE population < 100;
+Q3. SELECT *
+  FROM export_destination
+  WHERE export_destination_code < 20 AND population >= 100;
+Q4. SELECT *
+  FROM export_destination
+  WHERE export_destination_code >= 30 AND population > 100;
+Q5. SELECT population FROM export_destination WHERE export_destination_name='The Kingdom of Ritol';
+Q6. SELECT * FROM export_destination WHERE export_destination_name LIKE '%n%';
