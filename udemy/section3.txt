@@ -10,4 +10,3 @@ CREATE TABLE pastries (
 );
 DESC pastries;
 DROP TABLE pastries;
-
