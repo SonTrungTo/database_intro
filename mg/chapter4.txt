@@ -8,3 +8,33 @@ Q4. SELECT *
   WHERE export_destination_code >= 30 AND population > 100;
 Q5. SELECT population FROM export_destination WHERE export_destination_name='The Kingdom of Ritol';
 Q6. SELECT * FROM export_destination WHERE export_destination_name LIKE '%n%';
+Q7. SELECT MIN(population) FROM export_destination;
+Q8. SELECT MAX(population) FROM export_destination;
+Q9. SELECT SUM(population) FROM export_destination;
+Q10. SELECT SUM(population) FROM export_destination WHERE export_destination_code > 20;
+Q11. SELECT COUNT(*) FROM export_destination WHERE population >= 100;
+Q12. SELECT district, COUNT(*) FROM export_destination GROUP BY district HAVING district='North Sea';
+Q13. SELECT district, MAX(population) FROM export_destination GROUP BY district HAVING district='North Sea';
+Q14. SELECT SUM(population) FROM export_destination WHERE NOT export_destination_name='The Kingdom of Ritol';
+Q15. SELECT district, AVG(population) FROM export_destination GROUP BY district HAVING AVG(population) >= 200;
+Q16. SELECT district, COUNT(*) FROM export_destination GROUP BY district HAVING COUNT(*) >= 3;
+Q17. SELECT * FROM sales_statement WHERE product_code IN (
+      SELECT product_code FROM product WHERE unit_price >= 300
+    );
+Q18. SELECT * FROM sales_statement O
+  WHERE quantity < (
+    SELECT AVG(quantity) 
+      FROM sales_statement
+      WHERE product_code=O.product_code
+      GROUP BY product_code
+    );
+Q19. INSERT INTO export_destination VALUES 
+      (15, 'The Kingdom of Paronu', 200, 'Middle'),
+      (22, 'The Kingdom of Tokanta', 160, 'North Sea');
+Q20. CREATE VIEW north_sea_country
+      (export_destination_code, export_destination_name, population)
+      AS SELECT export_destination_code, export_destination_name, population
+      FROM export_destination
+      WHERE district='North Sea';
+Q21. UPDATE export_destination SET population = 150 WHERE export_destination_name='The Kingdom of Tokanta';
+Q22. DELETE FROM export_destination WHERE export_destination_name LIKE '%Paronu%';

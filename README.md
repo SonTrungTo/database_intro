@@ -50,3 +50,4 @@ are easier to manage and update.
 - Delete and Update.
 - Futher searches: `BETWEEN x1 AND x2` or `WHERE x1 is NULL`
 - `GROUP BY ... HAVING`
+- Sub-query vs Correlated query.
