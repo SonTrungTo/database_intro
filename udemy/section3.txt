@@ -1,0 +1,13 @@
+CREATE TABLE tweets(
+    username VARCHAR(15),
+    content VARCHAR(140),
+    number_of_favorites INT UNSIGNED
+);
+
+CREATE TABLE pastries (
+    name VARCHAR(50),
+    quantity INT UNSIGNED
+);
+DESC pastries;
+DROP TABLE pastries;
+
