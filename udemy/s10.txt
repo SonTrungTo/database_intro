@@ -1,0 +1,38 @@
+Q1. What's a good use case for CHAR?
+A1. Cases where the field name is short and expected. Example: Sex (F/M), Size(S/M/SS),...
+
+Q2. CREATE TABLE inventory (
+      item_name ______,
+      price _________,
+      quantity _____
+);
+A2. CREATE TABLE inventory (
+      item_name VARCHAR(128),
+      price DECIMAL(8,2),
+      quantity INT UNSIGNED
+);
+
+Q3. DATETIME vs TIMESTAMP?
+A3. TIMESTAMP is lighter and more appropriate to use as created_at
+
+Q4. Print out current time
+A4. SELECT NOW();
+
+Q5. Print out the current day
+A5. SELECT DATE_FORMAT(NOW(),'%Y-%m-%d');
+
+Q6. Print out the current day of week
+A6. SELECT DAYOFWEEK(NOW());
+
+Q7. Print out dayname of week
+A7. SELECT DAYNAME(NOW());
+
+A8. SELECT DATE_FORMAT(NOW(),'%m/%d/%Y');
+
+A9. SELECT DATE_FORMAT(NOW(),'%M %D at %H:%i');
+
+A10. CREATE TABLE tweets (
+     contents VARCHAR(255),
+     username VARCHAR(32),
+     created_at TIMESTAMP DEFAULT NOW() ON UPDATE CURRENT_TIMESTAMP
+    );
