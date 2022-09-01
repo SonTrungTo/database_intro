@@ -16,3 +16,40 @@ CREATE TABLE reviews (
     FOREIGN KEY (series_id) references series (id) ON DELETE CASCADE,
     FOREIGN KEY (reviewer_id) REFERENCES reviewers (id) ON DELETE CASCADE
 );
+
+SELECT title, rating FROM series
+    INNER JOIN reviews
+    ON reviews.series_id = series.id;
+
+SELECT title, AVG(rating) AS avg_rating FROM series s
+    INNER JOIN reviews r ON r.series_id = s.id
+    GROUP BY s.title
+    ORDER BY avg_rating;
+
+SELECT first_name, last_name, rating FROM reviews r
+    INNER JOIN reviewers rs ON rs.id = r.reviewer_id;
+
+SELECT title AS unreviewed_title
+FROM series s
+LEFT JOIN reviews r ON s.id = r.series_id
+WHERE r.rating IS NULL;
+
+SELECT genre, ROUND(AVG(rating),2) AS avg_rating FROM series s
+    INNER JOIN reviews r ON s.id = r.series_id
+    GROUP BY s.genre;
+
+SELECT 
+  first_name,
+  last_name,
+  COUNT(rating) AS COUNT,
+  IFNULL(MIN(rating),0) AS MIN,
+  IFNULL(MAX(rating),0) AS MAX,
+  IFNULL(AVG(rating),0) AS AVG,
+  IF(COUNT(rating) > 0, 'ACTIVE', 'INACTIVE') AS STATUS
+FROM reviewers rs LEFT JOIN
+reviews r ON r.reviewer_id = rs.id GROUP BY rs.first_name, rs.last_name;
+
+SELECT title, rating, CONCAT_WS(' ', first_name, last_name) AS reviewer FROM reviewers rs
+INNER JOIN reviews r ON r.reviewer_id = rs.id
+INNER JOIN series s ON r.series_id = s.id
+ORDER BY s.title, reviewer;
