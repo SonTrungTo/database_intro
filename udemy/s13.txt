@@ -1,0 +1,18 @@
+CREATE TABLE reviewers (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(128),
+    last_name VARCHAR(128)
+);
+CREATE TABLE series (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    released_year SMALLINT UNSIGNED,
+    genre VARCHAR(64)
+);
+CREATE TABLE reviews (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    rating DECIMAL(2,1),
+    series_id INT UNSIGNED NOT NULL,
+    reviewer_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (series_id) references series (id) ON DELETE CASCADE,
+    FOREIGN KEY (reviewer_id) REFERENCES reviewers (id) ON DELETE CASCADE
+);
