@@ -1,0 +1,37 @@
+CREATE TABLE students (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(128)
+);
+CREATE TABLE papers (
+    title VARCHAR(128),
+    grade TINYINT UNSIGNED,
+    student_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (student_id) REFERENCES students (id) ON DELETE CASCADE
+);
+
+SELECT first_name, title, grade FROM students
+    INNER JOIN papers
+    ON papers.student_id = students.id;
+
+SELECT first_name, title, grade FROM students
+    LEFT JOIN papers
+    ON papers.student_id = students.id;
+
+SELECT first_name, IFNULL(title, 'MISSING') AS title, IFNULL(grade, 0) AS grade
+FROM students
+LEFT JOIN papers ON papers.student_id = students.id;
+
+SELECT s.first_name, ROUND(AVG(IFNULL(p.grade,0)),2) AS average
+FROM students s
+LEFT JOIN papers p ON p.student_id = s.id
+GROUP BY s.first_name
+ORDER BY AVG(IFNULL(p.grade,0)) DESC;
+
+SELECT s.first_name, IF(AVG(IFNULL(p.grade,0)) > 0, ROUND(AVG(IFNULL(p.grade,0)), 2), 0) AS average, CASE
+  WHEN ROUND(AVG(IFNULL(p.grade,0)),2) > 75 THEN 'PASSING'
+  ELSE 'FAILING'
+END AS status
+FROM students s
+LEFT JOIN papers p ON p.student_id = s.id
+GROUP BY s.first_name
+ORDER BY AVG(IFNULL(p.grade,0)) DESC;
