@@ -19,3 +19,20 @@ CREATE TABLE comments (
     FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
     FOREIGN KEY (photo_id) REFERENCES photos (id) ON DELETE CASCADE
 );
+CREATE TABLE likes (
+    user_id INT UNSIGNED NOT NULL,
+    photo_id INT UNSIGNED NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW() ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
+    FOREIGN KEY (photo_id) REFERENCES photos (id) ON DELETE CASCADE,
+    PRIMARY KEY (user_id, photo_id)
+);
+CREATE TABLE follows (
+    follower_id INT UNSIGNED NOT NULL,
+    followee_id INT UNSIGNED NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW() ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (follower_id) REFERENCES users (id) ON DELETE CASCADE,
+    FOREIGN KEY (followee_id) REFERENCES users (id) ON DELETE CASCADE,
+    PRIMARY KEY (follower_id, followee_id),
+    CHECK (follower_id != followee_id)
+);
