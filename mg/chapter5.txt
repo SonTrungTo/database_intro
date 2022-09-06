@@ -4,4 +4,9 @@ Q3. Becky can apply a shared lock when Andy has applied a shared lock.
 Q4. Becky cannot apply a shared lock when Andy has applied an exclusive lock.
 Q5. Becky cannot apply an exclusive lock when Andy has applied a shared lock.
 Q6. Becky cannot apply an exclusive lock when Andy has applied an exclusive lock.
-
+Q7. The target resource for locking has been changed from table to
+a row. This leads to fine granularity which increases the number
+of transactions carried out concurrently.
+Q8. The target resource for locking has been changed from a row to
+a table. This leads to coarse granularity where fewer transactions
+is carried out concurrently.

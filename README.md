@@ -76,6 +76,8 @@ ROLLBACK;
 - Database must be consistent before and after a transaction occurs.
 - Beware of *lost update*, where a concurreny transaction is cancelled if another concurrent transaction is taking place.
 - All database must have access to the same resource without creating errors.
+- Resources: A or B, reprensenting rows or tables being
+processed.
 
 ### Isolation
 - The order of concurrent transactions processed is called *serializable*.
@@ -86,3 +88,38 @@ ROLLBACK;
 |-------------------|:------------:|:-----------------:|
 | **Shared lock**   |     Yes      |        No         |
 | **Exclusive lock**|      No      |        No         |
+
+**Two-phase locking**
+
+- To make transactions serializable, we need to obey specific rules
+for setting and releasing locks.
+- One of those rules is *two-phase locking*: For each transaction,
+one phase for setting locks and one for releasing locks.
+
+|          |     |             |
+|----------|:---:|:-----------:|
+| LOCK A   |     |   LOCK A    |
+| LOCK B   |     |   READ A    |
+| READ A   |     |   WRITE A   |
+| READ B   |     |   UNLOCK A  |
+| WRITE A  |     |   LOCK B    |
+| WRITE B  |     |   READ B    | 
+| UNLOCK A |     |   WRITE B   |
+| UNLOCK B |     |   UNLOCK B  |
+
+**Locking granularity**
+
+- The extent of to which resources are locked is referred to as
+*granularity*.
+- Fine granularity: Locking in units of rows (when a few resources are
+locked).
+- Coarse granularity: Locking in units of table (when many resources
+are locked at once). 
+- Because granularity is coarse, the number of locks per transaction
+is reduced, leading to fewer processes on the CPU. On the other hand,
+as resources are more, it takes longer to wait for other resource
+to unlock, leading to fewer transactions being processed.
+- In contrast, when granularity is fine, the number of locks per 
+transaction increases, leading to higher loads on the CPU.However,
+since resources are few, the time takes to process resources is smaller.
+This leads more transactions being processed.
