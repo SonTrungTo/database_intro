@@ -51,3 +51,38 @@ are easier to manage and update.
 - Futher searches: `BETWEEN x1 AND x2` or `WHERE x1 is NULL`
 - `GROUP BY ... HAVING`
 - Sub-query vs Correlated query.
+
+## Transactions
+- A series of successful operations is called a transaction.
+- A transaction must satisfy these properties (ACID) to protect against data inconsistencies:
+  - Atomicity: a transaction must either end with **commit** or **rollback** operation.
+  - Consistency: processing a transaction must never result in loss of "what-is-supposed-to-be"
+  before and after the transaction.
+  - Isolation: the result of a transaction applied concurrently must be the same
+  as that in sequential processing.
+  - Durability: The contents of a completed transaction is not affected by failure.
+### Atomicity
+All operations either succeeds or fails completely. If succeeds, COMMIT. If fails, ROLLBACK.
+
+``
+COMMIT;
+``
+
+``
+ROLLBACK;
+``
+
+### Consistency
+- Database must be consistent before and after a transaction occurs.
+- Beware of *lost update*, where a concurreny transaction is cancelled if another concurrent transaction is taking place.
+- All database must have access to the same resource without creating errors.
+
+### Isolation
+- The order of concurrent transactions processed is called *serializable*.
+- Isolation property requires that *serializable* transaction is protected against errors.
+- To make it serializable, we need to use locks. There are 2 types of locks: shared and exclusive lock. Shared is commonly used when reading data while exclusive is used when writing data.
+
+|                   | Shared lock  |  Exclusive lock   |
+|-------------------|:------------:|:-----------------:|
+| **Shared lock**   |     Yes      |        No         |
+| **Exclusive lock**|      No      |        No         |

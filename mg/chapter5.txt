@@ -1,0 +1,7 @@
+Q1. COMMIT;
+Q2. ROLLBACK;
+Q3. Becky can apply a shared lock when Andy has applied a shared lock.
+Q4. Becky cannot apply a shared lock when Andy has applied an exclusive lock.
+Q5. Becky cannot apply an exclusive lock when Andy has applied a shared lock.
+Q6. Becky cannot apply an exclusive lock when Andy has applied an exclusive lock.
+
