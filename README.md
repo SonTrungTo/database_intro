@@ -123,3 +123,35 @@ to unlock, leading to fewer transactions being processed.
 transaction increases, leading to higher loads on the CPU.However,
 since resources are few, the time takes to process resources is smaller.
 This leads more transactions being processed.
+
+**Other concurreny controls**
+
+- Using locks increases the burden of lock management =>
+deadlocks, where users action conflict occur.
+- Simpler method for concurreny controls when you have small
+number of transactions or a high number of read operations.
+  - **Timestamp control**: If a transaction with a later timestamp
+  has already updated the data, current operation is cancelled.
+  When a read or write operation is cancelled, the transaction is 
+  rolled back.
+  - **Optimistic control**: allows a read operation. When a write
+  operation is performed, the data is checked to see if any other
+  write operation has updated the data. If yes, the transaction is 
+  rolled back.
+
+**Levels of isolation**
+
+- `SET TRANSACTION ISOLATION LEVEL ...`
+  - `READ UNCOMMITED`: dirty read: possible, non-repeatable read: 
+  possible, phantom read: possible.
+  - `READ COMMITED`: dirty read: not possible, non-repeatable read: 
+  possible, phantom read: possible.
+  - `REPEATABLE READ`: dirty read: not possible, non-repeatable read: 
+  not possible, phantom read: possible.
+  - `SERIALIZABLE`: dirty read: not possible, non-repeatable read: 
+  not possible, phantom read: not possible.
+- *Dirty read*: transaction 2 reads a row before transaction 1 commits.
+- *Non-repeatable read*: transaction read the same data twice and gets
+a different value each.
+- *Phantom read*: transaction reads the wrong row because another
+transaction has changed the data.
