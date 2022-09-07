@@ -201,3 +201,47 @@ called **optimizer**. Two common types,
   - **Cost-based processing**: calculate the best way using
   database's statistics, which take time to manage.
 
+## Stored procedures
+- **Stored procedure**: program that does not return values
+from processing procedure.
+- **Stored function**: program that returns values
+from processsing procedure.
+- **Trigger**: program that automatically runs when
+before or after an operation on database.
+
+## Distributed database
+- **Horizontal distribution**: several instances (peers) of a database.
+(failure-resistant system by design).
+- **Vertical distribution**: assign different functions to different
+servers. => heavy load on a main server.
+
+## Partitioning data
+
+- Data is spread across servers for storage in a distributed database
+system.
+- **Horizontal paritition**: data is splitted into units of rows
+where different instances of database can share the same, related data
+across the same server.
+- **Vertical partition**: data is splitted into units of columns
+where different instances share different data across different 
+servers.
+
+## Two-phase commit
+
+- Is necessary to achieve atomicity as database is distributed
+across the servers: one commit from all successful commits for all
+instances.
+- Involves a *coordinator* and *participants*. In the first phase,
+the coordinator asks if a commit is possible for all participants,
+who sends an OK if it is. In the second phase, the participants
+complete each of their operation as instructed.
+  - If all succeeds, then transaction is commit.
+  - If all fails, then transaction is rolled back for all.
+
+## Database replication
+
+- Primary is called *master*, copy is called *replica*
+- Types:
+  - Read-only
+  - Replication enabled for all: all servers access to a master.
+

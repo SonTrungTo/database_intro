@@ -1,0 +1,7 @@
+Q1. Data Layer (Database server) is where database operate.
+Q2. Presentation Layer (Front-end) is where user interactions
+received and results displayed.
+Q3. First phase: Coordinator asks the participants if an commit
+is possible.
+Q4. Second phase: Coordinator gives all participants instructions
+to commit an operation => commit or rollback.
