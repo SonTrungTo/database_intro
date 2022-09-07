@@ -187,3 +187,17 @@ is the maximum of the original "group".
 a unique fingerprint for a value => index.
 
 ## Optimizing a Query
+- For selection, use full-match search or index-based search.
+- For join, 
+  - Nested loops (one row vs many other rows)
+  - Sort merge (sort then search)
+  - Hash (hash from one value to another)
+
+## Optimizer
+- In a database, a function that handles optimization of queries is
+called **optimizer**. Two common types,
+  - **Rule-based processing**: calculate the best way to
+  optimize time.
+  - **Cost-based processing**: calculate the best way using
+  database's statistics, which take time to manage.
+
