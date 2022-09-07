@@ -15,3 +15,12 @@ Q10. REVOKE DELETE ON product TO export_department;
 Q11. Overseas Business (Search: yes, Insert: yes, Update: yes, Delete: yes)
      Merchandise Business (Search: no, Insert: yes, Update: no, Delete: yes)
      Export Dept (Search: no, Insert: no, Update: yes, Delete: yes)
+Q12. T1 is rolled back because it does not commit before failure.
+Q13. T2 is rolled back because it commits before failure.
+Q14. T3 is unchanged because it is in the buffer, commited
+before checkpoint.
+Q15. Hash index is more powerful with an equal sign, for the value
+is a unique fingerprint.
+Q16. B-tree is more powerful with an inequality sign, for the
+value is segmented and allows for skipping unrelevant segmentation of data.
+

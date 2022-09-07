@@ -156,10 +156,34 @@ a different value each.
 - *Phantom read*: transaction reads the wrong row because another
 transaction has changed the data.
 
-## Durability
+### Durability
 
 - Ensure security
 - `GRANT <privilege> ON <table_name> TO <mysql_user> (WITH GRANT
 OPTION);`
 - `REVOKE <privilege> ON <table_name> TO <mysql_user>;`
 - These privileges can be granted on a view.
+
+## Failures
+- Transaction failure: when a transaction cannot complete due to the
+errors in transaction itself. This transaction is rolled back.
+- System failure: when a power failure occurs,
+  - If a transaction is commited before failure occurs, it is rolled
+  forward.
+  - If a transaction is **not** commited before failure occurs,
+  it is rolled back.
+- Media failure: when hard disk is damaged => use backup files =>
+transactions that are commited before backup is rolled forward.
+
+### Checkpoint
+- To create efficiency, checkpoint is when a buffer's and a database's data are synchronized.
+
+## Indexes
+- *Index*: a tool which allows for speedily access to the location of target data, with fast results.
+- **B-index**: all nodes are sorted. Then from the original node,
+construct a parent node such that for each new node, the index
+is the maximum of the original "group".
+- **Hash index**: target data is hashed by a hash function, becoming
+a unique fingerprint for a value => index.
+
+## Optimizing a Query
