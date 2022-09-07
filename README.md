@@ -155,3 +155,11 @@ number of transactions or a high number of read operations.
 a different value each.
 - *Phantom read*: transaction reads the wrong row because another
 transaction has changed the data.
+
+## Durability
+
+- Ensure security
+- `GRANT <privilege> ON <table_name> TO <mysql_user> (WITH GRANT
+OPTION);`
+- `REVOKE <privilege> ON <table_name> TO <mysql_user>;`
+- These privileges can be granted on a view.

@@ -10,3 +10,8 @@ of transactions carried out concurrently.
 Q8. The target resource for locking has been changed from a row to
 a table. This leads to coarse granularity where fewer transactions
 is carried out concurrently.
+Q9. GRANT SELECT ON product TO export_department;
+Q10. REVOKE DELETE ON product TO export_department;
+Q11. Overseas Business (Search: yes, Insert: yes, Update: yes, Delete: yes)
+     Merchandise Business (Search: no, Insert: yes, Update: no, Delete: yes)
+     Export Dept (Search: no, Insert: no, Update: yes, Delete: yes)
